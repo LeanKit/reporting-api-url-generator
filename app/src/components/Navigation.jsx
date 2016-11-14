@@ -11,7 +11,7 @@ class Navigation extends React.Component {
 			<div id="side-nav">
 				<ul>
 					<li><Link to="/" className="nav"><i className="fa fa-home" /></Link></li>
-					<li><Link to="/settings" className="nav"><i className="fa fa-cog" /></Link></li>
+					<li><Link to="/help" className="nav"><i className="fa fa-question-circle" /></Link></li>
 				</ul>
 				<img className="logo" src="./images/lk-logo.svg" />
 			</div>

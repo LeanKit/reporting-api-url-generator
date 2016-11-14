@@ -2,7 +2,7 @@ import { Router, Route, IndexRoute, Link, IndexLink, browserHistory } from "reac
 import React from "react";
 import ReactDOM from "react-dom";
 import Home from "./src/components/Home";
-import Settings from "./src/components/Settings";
+import Help from "./src/components/Help";
 
 const $ = jQuery = global.$ = global.jQuery = require( "jquery" );
 require( "bootstrap" );
@@ -11,7 +11,7 @@ document.addEventListener( "DOMContentLoaded", () => {
 	ReactDOM.render( (
 		<Router>
 			<Route path="/" component={ Home } />
-			<Route path="/settings" component={ Settings } />
+			<Route path="/help" component={ Help } />
 		</Router>
 	), document.getElementById( "app" ) );
 

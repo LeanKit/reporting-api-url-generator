@@ -1,7 +1,7 @@
 import React from "react";
 import Navigation from "./Navigation";
 
-class Settings extends React.Component {
+class Help extends React.Component {
 	constructor( props ) {
 		super( props );
 		this.state = {
@@ -14,7 +14,7 @@ class Settings extends React.Component {
 			<div>
 				<Navigation />
 				<div className="container-fluid" id="main">
-					<h1>Settings</h1>
+					<h1>Help and Support</h1>
 				</div>
 			</div>
 		);
@@ -29,4 +29,4 @@ class Settings extends React.Component {
 // 	onSearch: React.PropTypes.func
 // };
 
-export default Settings;
+export default Help;
