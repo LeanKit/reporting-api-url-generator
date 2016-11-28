@@ -1,5 +1,6 @@
 import React from "react";
 import Navigation from "./Navigation";
+import { clipboard } from "electron";
 
 const $ = jQuery = global.$ = global.jQuery = require( "jquery" );
 
@@ -48,6 +49,15 @@ class Home extends React.Component {
         e.preventDefault();
     }
 
+    onCopyToClipboard( e ) {
+        e.stopPropagation();
+		e.preventDefault();
+		let url = this.state.url;
+		clipboard.writeText( url );
+        alert( "Copied to the clipboard!" );
+		// new Notification( "Url Generator", { body: "Copied to clipboard!" } );
+    }
+
     generateUrl( e ) {
         if (this.state) {
             //alert('got state!');
@@ -64,12 +74,13 @@ class Home extends React.Component {
                 data: JSON.stringify(authData),
                 dataType: "json",
                 contentType: "application/json",
-                success: function(response) {
+                success: (response) => {
                     var token = response.token;
                     generatedUrl = baseUrl + '/export/' + dataSource + '.' + dataFormat + '?token=' + token;
-                    $('input[name="url"]').val(generatedUrl);
+                    this.setState( { url: generatedUrl } );
+                    // $('input[name="url"]').val(generatedUrl);
                 },
-                error : function(request, textStatus, errorThrown) {
+                error : (request, textStatus, errorThrown) => {
                     console.log('status ' + textStatus);
                     console.log('error ' + errorThrown);
                     alert('An error occurred while generating your URL. Please try again.')
@@ -152,6 +163,9 @@ class Home extends React.Component {
                                    className="form-control"
                                    onFocus={ this.selectUrl }
                                    name="url" />
+                        </div>
+                        <div className="input-group">
+                            <div className="btn submit-button" onClick={this.onCopyToClipboard.bind( this )}><i className="glyphicon glyphicon-copy"></i> Copy to the Clipboard</div>
                         </div>
 					</form>
 				</div>
