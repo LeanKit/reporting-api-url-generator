@@ -22,7 +22,7 @@ const appConfig = new AppConfig( store );
 let mainWindow;
 const mainWindowState = windowState( "main", {
 	width: 800,
-	height: 600
+	height: 700
 } );
 
 const initMenus = () => {
